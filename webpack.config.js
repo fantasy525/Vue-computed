@@ -3,26 +3,25 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'V.js',
+    filename: 'index.js',
     publicPath:'/'
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.js$/,
-        exclude: /node_modules/, 
+        exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-            plugins: ['transform-runtime']
-          }
+          loader: 'babel-loader'
+         
         }
-       }
+      }
     ]
   },
   devServer: {
-    port: 8081
+    port: 8081,
+    inline:true
+  
     
   }
 }
